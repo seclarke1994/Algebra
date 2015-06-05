@@ -1,0 +1,46 @@
+letters = ["a", "b"];
+print ""
+print ""
+count =1
+for i in range(2):
+    for j in range(2):
+        for k in range(2):
+            for l in range(2):
+                print "|      |(a,a)|(a,b)|(b,a)|(b,b)|"
+                print "--------------------------------"
+                if count < 10:
+                    print "| Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+                else:
+                    print "|Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+                if letters[j]==letters[k]:
+                    print "Op", count, " is commutative."
+                def star(x,y):
+                    if x=="a" and y=="a":
+                        return letters[i]
+                    elif x=="a" and y=="b":
+                        return letters[j]
+                    elif x=="b" and y=="a":
+                        return letters[k]
+                    elif x=="b" and y=="b":
+                        return letters[l]
+                    else:
+                        return "xxx"
+                        print "invalid input for star"
+                assocval = 1       
+                for index1 in range(2):
+                    for index2 in range(2):
+                        for index3 in range(2):
+                            if((letters[index1],(star(letters[index2],letters[index3])))==\
+                            "xxx" or((letters[index1],letters[index2]),letters[index3])==\
+                            "xxx"):
+                                break
+                            else:
+                                assocval=assocval*((letters[index1],\
+                                (star(letters[index2],letters[index3])))==star\
+                                ((letters[index1],letters[index2]),letters[index3]))
+                if assocval==1:
+                    print "Op", count, " is associative."
+                    
+                count+=1

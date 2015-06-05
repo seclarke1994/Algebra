@@ -1,6 +1,19 @@
 letters = ["a", "b"];
+print ""
+print ""
+count =1
 for i in range(2):
-    for j in range(2);
-        for k in range(2);
-            for l in range(2);
-                print letters[i], letters[j], letters[k], letters[l];
+    for j in range(2):
+        for k in range(2):
+            for l in range(2):
+                print "|      |(a,a)|(a,b)|(b,a)|(b,b)|"
+                print "--------------------------------"
+                if count < 10:
+                    print "| Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+                else:
+                    print "|Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+                if letters[j]==letters[k]:
+                    print "Op", count, " is commutative."
+                count+=1

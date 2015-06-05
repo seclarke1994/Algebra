@@ -1,0 +1,109 @@
+"""This script examines the set all of the possible operations on a set of two elements,
+a & b. It determines which operations are commutative and which are associative,
+names the identity for those operations that have one, and determines for which operations
+every element has an inverse"""
+
+#set up the initial lists, strings and counters
+letters = ["a", "b"];
+print ""
+print ""
+comm_list=""
+assoc_list=""
+ident_list=""
+inverse_list=""
+count =1
+
+#The nested i, j, k loop generates the operations one at a time and examines each
+#for the pertinent properties
+for i in range(2):
+    for j in range(2):
+        for k in range(2):
+            for l in range(2):
+
+#print the definition for each operation
+                print "|      |(a,a)|(a,b)|(b,a)|(b,b)|"
+                print "--------------------------------"
+                if count < 10:
+                    print "| Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+                else:
+                    print "|Op", count,"| ", letters[i]," | ", letters[j]," | ", letters[k], " | ", letters[l]," |"
+                    print "-----------------------------"
+
+#determine whether the operation is commutative
+                if letters[j]==letters[k]:
+                    print "Op", count, " is commutative."
+                    comm_list+="Op"
+                    comm_list+=str(count)
+                    comm_list+="\n"
+
+#The function "star" is used to model the operation when testing for associativity
+                def star(x,y):
+                    if x=="a" and y=="a":
+                        return letters[i]
+                    elif x=="a" and y=="b":
+                        return letters[j]
+                    elif x=="b" and y=="a":
+                        return letters[k]
+                    elif x=="b" and y=="b":
+                        return letters[l]
+                    else:
+                        return "xxx"
+                        print "invalid input for star"
+
+#Determine whether the operation is associative.
+                asscount=1
+                for index1 in range(2):
+                    for index2 in range(2):
+                        for index3 in range(2):
+                            """print letters[index1],"*(",letters[index2],"*",\
+                            letters[index3],")"," = ",star(letters[index1],(star\
+                            (letters[index2],letters[index3])))
+                            print "(",letters[index1],"*",letters[index2],")*",\
+                            letters[index3]," = ",star(star(letters[index1],\
+                            letters[index2]),letters[index3])"""
+                            test = (star(letters[index1],(star(letters\
+                            [index2],letters[index3])))==star(star(letters[index1],\
+                            letters[index2]),letters[index3]))
+                            asscount=asscount*test
+                if asscount==1:
+                    print "Op", count, " is associative."
+                    assoc_list+="Op"
+                    assoc_list+=str(count)
+                    assoc_list+="\n"
+
+#Determine which element, if any, is an identity element for this operation.
+                ident=""
+                if (letters[i]=="a" and letters[k]=="b" and \
+                    letters[j]=="a" and letters[l]=="b"):
+                    ident_list+="Op"
+                    ident_list+=str(count)
+                    ident_list+=" (has two identity elemsnts, a and b);\n"
+                    ident="both"
+                elif (letters[i]=="a" and letters[k]=="b"):
+                    ident_list+="Op"
+                    ident_list+=str(count)
+                    ident_list+=" (identity elemsnt is a);\n"
+                    ident="a"
+                elif (letters[j]=="a" and letters[l]=="b"):
+                    ident_list+="Op"
+                    ident_list+=str(count)
+                    ident_list+=" (identity elemsnt is b);\n"
+                    ident="b"
+                count+=1
+print ""
+print ""
+
+#Print the a summary of the results for all operations.
+print "The following operations are commutative:"
+print comm_list
+print ""
+print ""
+print "The following operations are associative:"
+print assoc_list
+print ""
+print ""
+print "The following operations have an identity element:"
+print ident_list
+print ""
+print ""

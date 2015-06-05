@@ -1,0 +1,10 @@
+def star(x,y):
+    if x=="a" and y=="a":
+        return letters[i]
+    elseif x=="a" and y=="b":
+        return letters[j]
+    elseif x=="b" and y=="a":
+        return letters[k]
+    elseif x=="b" and y=="b":
+        return letters[l]
+print star(5,2)
